@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+
+    <radialGradient id="bg" cx="30%" cy="25%" r="85%">
+      <stop offset="0%" stop-color="#1c1530"/>
+      <stop offset="100%" stop-color="#0d0d0f"/>
+    </radialGradient>
+
+    <!--
+      Gradients run left→right in userSpaceOnUse:
+      x1=8.7 (cursor base) → x2=32 (tail right edge)
+      Bright white at head (cursor), fades to transparent at tail.
+    -->
+    <linearGradient id="coreGrad" gradientUnits="userSpaceOnUse"
+      x1="8.7" y1="18" x2="32" y2="18">
+      <stop offset="0%"   stop-color="#ffffff"  stop-opacity="1.0"/>
+      <stop offset="18%"  stop-color="#e8e0ff"  stop-opacity="1.0"/>
+      <stop offset="42%"  stop-color="#a480ff"  stop-opacity="0.85"/>
+      <stop offset="68%"  stop-color="#6644cc"  stop-opacity="0.45"/>
+      <stop offset="88%"  stop-color="#2a0a4a"  stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#0d0030"  stop-opacity="0.0"/>
+    </linearGradient>
+
+    <linearGradient id="glowGrad" gradientUnits="userSpaceOnUse"
+      x1="8.7" y1="18" x2="32" y2="18">
+      <stop offset="0%"   stop-color="#d4cbff"  stop-opacity="0.80"/>
+      <stop offset="20%"  stop-color="#c4b8ff"  stop-opacity="0.65"/>
+      <stop offset="48%"  stop-color="#9b87ff"  stop-opacity="0.45"/>
+      <stop offset="72%"  stop-color="#5533aa"  stop-opacity="0.18"/>
+      <stop offset="90%"  stop-color="#1a0835"  stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="#0d0030"  stop-opacity="0.0"/>
+    </linearGradient>
+
+    <linearGradient id="hazeGrad" gradientUnits="userSpaceOnUse"
+      x1="8.7" y1="18" x2="32" y2="18">
+      <stop offset="0%"   stop-color="#a99bff"  stop-opacity="0.35"/>
+      <stop offset="30%"  stop-color="#7c6fe0"  stop-opacity="0.22"/>
+      <stop offset="60%"  stop-color="#4422aa"  stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#0d0030"  stop-opacity="0.0"/>
+    </linearGradient>
+
+    <!-- Cursor fills -->
+    <linearGradient id="cur" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#ece8ff"/>
+    </linearGradient>
+    <linearGradient id="bevel" x1="0%" y1="0%" x2="80%" y2="80%">
+      <stop offset="0%"   stop-color="#000000" stop-opacity="0.18"/>
+      <stop offset="40%"  stop-color="#000000" stop-opacity="0.04"/>
+      <stop offset="100%" stop-color="#ffffff"  stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Neon glow filters — wide x/y regions prevent clipping at canvas edges -->
+    <filter id="hazeBlur" x="-50%" y="-300%" width="200%" height="700%">
+      <feGaussianBlur stdDeviation="3.2"/>
+    </filter>
+    <filter id="glowBlur" x="-40%" y="-180%" width="180%" height="460%">
+      <feGaussianBlur stdDeviation="1.6"/>
+    </filter>
+    <filter id="tightBlur" x="-30%" y="-80%" width="160%" height="260%">
+      <feGaussianBlur stdDeviation="0.65"/>
+    </filter>
+
+    <filter id="ambient" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="5"/>
+    </filter>
+
+  </defs>
+
+  <!-- Background -->
+  <rect width="32" height="32" rx="7" fill="url(#bg)"/>
+
+  <!-- Ambient glow beneath the wave -->
+  <ellipse cx="21" cy="19" rx="13" ry="7"
+    fill="#6633cc" opacity="0.08" filter="url(#ambient)"/>
+
+  <!--
+    CURVY W WAVELENGTH — smooth sine-wave shape using cubic beziers.
+    Starts at cursor base (8.7, 17.8) and flows rightward to (32, ~19).
+
+    The path describes one full W wavelength:
+      Head    : (8.7,  17.8) — cursor base, wave origin
+      Dip 1   : valley down around x=13-14
+      Peak 1  : crest up around x=18-19
+      Dip 2   : valley down around x=24-25
+      Tail    : fades out around x=31-32
+
+    All turns are cubic bezier curves so no hard points exist.
+    The amplitude is ~8px (trough at y≈23, crest at y≈13) to fill
+    the lower 2/3 of the icon.
+
+    Wave path using C (cubic bezier):
+      M 8.7,17.8
+      C 10,17.8  11,23   13.5,23    ← smooth into first trough
+      C 16,23    17,13   19,13      ← smooth up to first crest
+      C 21,13    22,23   24.5,23    ← smooth down to second trough
+      C 27,23    29,16   32,18      ← smooth tail fade out rightward
+  -->
+
+  <!-- Layer 1: Wide atmospheric haze -->
+  <path d="M8.7,17.8 C10,17.8 11,24 13.5,24 C16,24 17,12 19,12 C21,12 22,24 24.5,24 C27,24 29,16 32,18"
+    fill="none" stroke="url(#hazeGrad)"
+    stroke-width="11" stroke-linecap="round" stroke-linejoin="round"
+    filter="url(#hazeBlur)"/>
+
+  <!-- Layer 2: Mid neon glow -->
+  <path d="M8.7,17.8 C10,17.8 11,24 13.5,24 C16,24 17,12 19,12 C21,12 22,24 24.5,24 C27,24 29,16 32,18"
+    fill="none" stroke="url(#glowGrad)"
+    stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"
+    filter="url(#glowBlur)"/>
+
+  <!-- Layer 3: Tight glowing core -->
+  <path d="M8.7,17.8 C10,17.8 11,24 13.5,24 C16,24 17,12 19,12 C21,12 22,24 24.5,24 C27,24 29,16 32,18"
+    fill="none" stroke="url(#coreGrad)"
+    stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"
+    filter="url(#tightBlur)"/>
+
+  <!-- Layer 4: Hot white core line -->
+  <path d="M8.7,17.8 C10,17.8 11,24 13.5,24 C16,24 17,12 19,12 C21,12 22,24 24.5,24 C27,24 29,16 32,18"
+    fill="none" stroke="url(#coreGrad)"
+    stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!--
+    CURSOR — apex at (4,5), left-pointing.
+    No halo layer — it caused a dark bleed over the wave.
+    3 layers: outer stroke → fill → bevel → accent
+  -->
+
+  <!-- Layer 1: crisp outer stroke -->
+  <path d="M4 5 L4 15.5 L6.5 13 L8.7 17.8 L10.3 17 L8.1 12.3 L11.2 12.3 Z"
+    fill="none" stroke="#050507" stroke-width="1.2" stroke-linejoin="round"/>
+
+  <!-- Layer 2: white fill -->
+  <path d="M4 5 L4 15.5 L6.5 13 L8.7 17.8 L10.3 17 L8.1 12.3 L11.2 12.3 Z"
+    fill="url(#cur)"/>
+
+  <!-- Layer 3: inner bevel -->
+  <path d="M4 5 L4 15.5 L6.5 13 L8.7 17.8 L10.3 17 L8.1 12.3 L11.2 12.3 Z"
+    fill="url(#bevel)"/>
+
+  <!-- Layer 4: purple inner accent stroke -->
+  <path d="M4 5 L4 15.5 L6.5 13 L8.7 17.8 L10.3 17 L8.1 12.3 L11.2 12.3 Z"
+    fill="none" stroke="#a99bff" stroke-width="0.7" stroke-linejoin="round" opacity="0.85"/>
+
+</svg>

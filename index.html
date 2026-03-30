@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wispr — Cursor Trail Designer</title>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar" aria-label="Designer header">
+      <div class="brand-group">
+        <h1 class="brand-title">wispr.</h1>
+        <p class="brand-subtitle">Design, preview, and export interactive cursor trail effects.</p>
+      </div>
+
+      <div class="theme-picker" role="group" aria-label="Canvas theme selection">
+        <span class="picker-label">Canvas Theme</span>
+        <div class="theme-options">
+          <button type="button" class="theme-btn is-active" data-theme="dark">Dark</button>
+          <button type="button" class="theme-btn" data-theme="light">Light</button>
+          <button type="button" class="theme-btn" data-theme="grid">Grid</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="workspace" aria-label="Trail designer workspace">
+      <aside class="panel panel-controls" aria-label="Cursor trail configuration">
+        <div class="panel-header">
+          <h2>Trail Configuration</h2>
+          <p>Use these controls to shape trail behavior and visuals.</p>
+        </div>
+
+        <form id="trail-config-form" class="config-form">
+          <label class="field">
+            <span>Particles</span>
+            <input id="particles" name="particles" type="range" min="8" max="120" value="32" />
+          </label>
+
+          <label class="field">
+            <span>Trail Size</span>
+            <input id="trail-size" name="trailSize" type="range" min="2" max="26" value="10" />
+          </label>
+
+          <label class="field">
+            <span>Glow Strength</span>
+            <input id="glow" name="glow" type="range" min="0" max="100" value="55" />
+          </label>
+
+          <label class="field">
+            <span>Particle Shape</span>
+            <select id="shape" name="shape">
+              <option value="circle">Circle</option>
+              <option value="square">Square</option>
+              <option value="spark">Spark</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>Primary Color</span>
+            <input id="color" name="color" type="color" value="#4cc9f0" />
+          </label>
+        </form>
+      </aside>
+
+      <section class="panel panel-canvas" aria-label="Canvas preview">
+        <div class="panel-header">
+          <h2>Canvas</h2>
+          <p>Move your cursor in this area to preview your effect.</p>
+        </div>
+
+        <div id="canvas" class="canvas-stage">
+          <div class="canvas-hint">Move your cursor here</div>
+        </div>
+      </section>
+
+      <aside class="panel panel-export" aria-label="Code export panel">
+        <div class="panel-header">
+          <h2>Code Export</h2>
+          <p>Copy generated starter code and continue customizing.</p>
+        </div>
+
+        <div class="code-tabs" role="tablist" aria-label="Export format tabs">
+          <button type="button" class="tab-btn is-active" data-tab="js">JavaScript</button>
+          <button type="button" class="tab-btn" data-tab="css">CSS</button>
+          <button type="button" class="tab-btn" data-tab="html">HTML</button>
+        </div>
+
+        <pre id="code-output" class="code-output"></pre>
+        <button id="copy-code" type="button" class="copy-btn">Copy code</button>
+      </aside>
+    </main>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
