@@ -1,97 +1,359 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Wispr — Cursor Trail Designer</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 </head>
+
 <body>
-  <div class="app-shell">
-    <header class="topbar" aria-label="Designer header">
-      <div class="brand-group">
-        <h1 class="brand-title">wispr.</h1>
-        <p class="brand-subtitle">Design, preview, and export interactive cursor trail effects.</p>
-      </div>
+  <div class="toast" id="toast">Copied to clipboard!</div>
 
-      <div class="theme-picker" role="group" aria-label="Canvas theme selection">
-        <span class="picker-label">Canvas Theme</span>
-        <div class="theme-options">
-          <button type="button" class="theme-btn is-active" data-theme="dark">Dark</button>
-          <button type="button" class="theme-btn" data-theme="light">Light</button>
-          <button type="button" class="theme-btn" data-theme="grid">Grid</button>
-        </div>
-      </div>
-    </header>
-
-    <main class="workspace" aria-label="Trail designer workspace">
-      <aside class="panel panel-controls" aria-label="Cursor trail configuration">
-        <div class="panel-header">
-          <h2>Trail Configuration</h2>
-          <p>Use these controls to shape trail behavior and visuals.</p>
-        </div>
-
-        <form id="trail-config-form" class="config-form">
-          <label class="field">
-            <span>Particles</span>
-            <input id="particles" name="particles" type="range" min="8" max="120" value="32" />
-          </label>
-
-          <label class="field">
-            <span>Trail Size</span>
-            <input id="trail-size" name="trailSize" type="range" min="2" max="26" value="10" />
-          </label>
-
-          <label class="field">
-            <span>Glow Strength</span>
-            <input id="glow" name="glow" type="range" min="0" max="100" value="55" />
-          </label>
-
-          <label class="field">
-            <span>Particle Shape</span>
-            <select id="shape" name="shape">
-              <option value="circle">Circle</option>
-              <option value="square">Square</option>
-              <option value="spark">Spark</option>
-            </select>
-          </label>
-
-          <label class="field">
-            <span>Primary Color</span>
-            <input id="color" name="color" type="color" value="#4cc9f0" />
-          </label>
-        </form>
-      </aside>
-
-      <section class="panel panel-canvas" aria-label="Canvas preview">
-        <div class="panel-header">
-          <h2>Canvas</h2>
-          <p>Move your cursor in this area to preview your effect.</p>
-        </div>
-
-        <div id="canvas" class="canvas-stage">
-          <div class="canvas-hint">Move your cursor here</div>
-        </div>
-      </section>
-
-      <aside class="panel panel-export" aria-label="Code export panel">
-        <div class="panel-header">
-          <h2>Code Export</h2>
-          <p>Copy generated starter code and continue customizing.</p>
-        </div>
-
-        <div class="code-tabs" role="tablist" aria-label="Export format tabs">
-          <button type="button" class="tab-btn is-active" data-tab="js">JavaScript</button>
-          <button type="button" class="tab-btn" data-tab="css">CSS</button>
-          <button type="button" class="tab-btn" data-tab="html">HTML</button>
-        </div>
-
-        <pre id="code-output" class="code-output"></pre>
-        <button id="copy-code" type="button" class="copy-btn">Copy code</button>
-      </aside>
-    </main>
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="logo">wispr<span>.</span></div>
+    <div class="topbar-center">
+      <button class="mode-btn active" onclick="setCanvasBg('dark',this)">Dark canvas</button>
+      <button class="mode-btn" onclick="setCanvasBg('light',this)">Light canvas</button>
+      <button class="mode-btn" onclick="setCanvasBg('gradient',this)">Gradient</button>
+    </div>
+    <button class="export-btn" onclick="exportAll()">Export all</button>
   </div>
 
+  <div class="app">
+
+    <!-- LEFT PANEL -->
+    <div class="panel">
+
+      <!-- PRESETS -->
+      <div class="section">
+        <div class="section-title">Presets</div>
+        <div class="preset-row">
+          <div class="preset-chip none-chip active" id="preset-none" onclick="applyPreset('none')">None</div>
+          <div class="preset-chip" id="preset-galaxy" onclick="applyPreset('galaxy')">Galaxy</div>
+          <div class="preset-chip" id="preset-fire" onclick="applyPreset('fire')">Fire</div>
+          <div class="preset-chip" id="preset-candy" onclick="applyPreset('candy')">Candy</div>
+          <div class="preset-chip" id="preset-neon" onclick="applyPreset('neon')">Neon</div>
+          <div class="preset-chip" id="preset-snow" onclick="applyPreset('snow')">Snow</div>
+          <div class="preset-chip" id="preset-gold" onclick="applyPreset('gold')">Gold</div>
+        </div>
+      </div>
+
+      <!-- SHAPES -->
+      <div class="section">
+        <div class="section-title">Shape</div>
+        <div class="shape-grid" id="shape-grid">
+          <div class="shape-cell">
+            <div class="shape-btn active" onclick="setShape('circle',this)">
+              <svg viewBox="0 0 40 40">
+                <circle cx="20" cy="20" r="12" fill="none" stroke="currentColor" stroke-width="2" />
+              </svg>
+            </div>
+            <div class="shape-label">Circle</div>
+          </div>
+          <div class="shape-cell">
+            <div class="shape-btn" onclick="setShape('square',this)">
+              <svg viewBox="0 0 40 40">
+                <rect x="9" y="9" width="22" height="22" rx="2" fill="none" stroke="currentColor" stroke-width="2" />
+              </svg>
+            </div>
+            <div class="shape-label">Square</div>
+          </div>
+          <div class="shape-cell">
+            <div class="shape-btn" onclick="setShape('triangle',this)">
+              <svg viewBox="0 0 40 40">
+                <polygon points="20,8 34,32 6,32" fill="none" stroke="currentColor" stroke-width="2" />
+              </svg>
+            </div>
+            <div class="shape-label">Triangle</div>
+          </div>
+          <div class="shape-cell">
+            <div class="shape-btn" onclick="setShape('star4',this)">
+              <svg viewBox="0 0 40 40">
+                <polygon points="20,4 23,17 36,17 26,25 29,38 20,30 11,38 14,25 4,17 17,17" fill="none"
+                  stroke="currentColor" stroke-width="2" />
+              </svg>
+            </div>
+            <div class="shape-label">Star 5</div>
+          </div>
+          <div class="shape-cell">
+            <div class="shape-btn" onclick="setShape('star4pt',this)">
+              <svg viewBox="0 0 40 40">
+                <polygon points="20,4 23,17 36,20 23,23 20,36 17,23 4,20 17,17" fill="none" stroke="currentColor"
+                  stroke-width="2" />
+              </svg>
+            </div>
+            <div class="shape-label">Star 4</div>
+          </div>
+          <div class="shape-cell">
+            <div class="shape-btn" onclick="setShape('heart',this)">
+              <svg viewBox="0 0 40 40">
+                <path
+                  d="M20,32 C20,32 6,22 6,14 C6,9 10,6 14,7 C16,8 18,10 20,13 C22,10 24,8 26,7 C30,6 34,9 34,14 C34,22 20,32 20,32Z"
+                  fill="none" stroke="currentColor" stroke-width="2" />
+              </svg>
+            </div>
+            <div class="shape-label">Heart</div>
+          </div>
+          <div class="shape-cell">
+            <div class="shape-btn" onclick="setShape('diamond',this)">
+              <svg viewBox="0 0 40 40">
+                <polygon points="20,5 35,20 20,35 5,20" fill="none" stroke="currentColor" stroke-width="2" />
+              </svg>
+            </div>
+            <div class="shape-label">Diamond</div>
+          </div>
+          <div class="shape-cell">
+            <div class="shape-btn" onclick="setShape('hexagon',this)">
+              <svg viewBox="0 0 40 40">
+                <polygon points="20,5 33,12 33,28 20,35 7,28 7,12" fill="none" stroke="currentColor" stroke-width="2" />
+              </svg>
+            </div>
+            <div class="shape-label">Hex</div>
+          </div>
+          <div class="shape-cell">
+            <div class="shape-btn" onclick="setShape('cross',this)">
+              <svg viewBox="0 0 40 40">
+                <path d="M20,6 L20,34 M6,20 L34,20" fill="none" stroke="currentColor" stroke-width="3"
+                  stroke-linecap="round" />
+              </svg>
+            </div>
+            <div class="shape-label">Cross</div>
+          </div>
+          <div class="shape-cell">
+            <div class="shape-btn" onclick="setShape('spark',this)">
+              <svg viewBox="0 0 40 40">
+                <path d="M20,5 L22,18 L35,20 L22,22 L20,35 L18,22 L5,20 L18,18Z" fill="none" stroke="currentColor"
+                  stroke-width="2" />
+              </svg>
+            </div>
+            <div class="shape-label">Spark</div>
+          </div>
+          <div class="shape-cell">
+            <div class="shape-btn" onclick="setShape('ring',this)">
+              <svg viewBox="0 0 40 40">
+                <circle cx="20" cy="20" r="13" fill="none" stroke="currentColor" stroke-width="4" />
+              </svg>
+            </div>
+            <div class="shape-label">Ring</div>
+          </div>
+          <div class="shape-cell">
+            <div class="shape-btn" onclick="setShape('dot',this)">
+              <svg viewBox="0 0 40 40">
+                <circle cx="20" cy="20" r="6" fill="currentColor" />
+              </svg>
+            </div>
+            <div class="shape-label">Dot</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- COLORS -->
+      <div class="section">
+        <div class="section-title">Colors</div>
+
+        <!-- Quick palette -->
+        <div class="palette-label">Quick palette</div>
+        <div class="quick-palette" id="quick-palette"></div>
+
+        <!-- Live preview bar -->
+        <div class="color-preview-bar" id="color-bar"></div>
+
+        <!-- Color swatches -->
+        <div class="color-slots" id="color-slots">
+          <div class="color-slot" id="slot1">
+            <div class="color-swatch active-slot" id="cp1" style="background:#9b87ff" onclick="activateSlot(1)">
+              <div class="color-swatch-num">1</div>
+              <div class="color-swatch-hex" id="hex1">#9b87ff</div>
+              <input type="color" value="#9b87ff" oninput="updateColor(1,this.value)" />
+            </div>
+          </div>
+          <div class="color-slot" id="slot2">
+            <div class="color-swatch" id="cp2" style="background:#ff6b9d" onclick="activateSlot(2)">
+              <div class="color-swatch-num">2</div>
+              <div class="color-swatch-hex" id="hex2">#ff6b9d</div>
+              <input type="color" value="#ff6b9d" oninput="updateColor(2,this.value)" />
+            </div>
+          </div>
+          <div class="color-slot" id="slot3" style="display:none">
+            <div class="color-swatch" id="cp3" style="background:#4ecdc4" onclick="activateSlot(3)">
+              <div class="color-swatch-num">3</div>
+              <div class="color-swatch-hex" id="hex3">#4ecdc4</div>
+              <input type="color" value="#4ecdc4" oninput="updateColor(3,this.value)" />
+            </div>
+          </div>
+          <div class="color-add-btn" id="color-add-btn" onclick="toggleColorSlot()" title="Add/remove color">+</div>
+        </div>
+
+        <!-- Color mode -->
+        <div class="color-mode-row">
+          <div class="toggle-pill active" id="mode-gradient" onclick="setColorMode('gradient')">
+            <div class="pill-icon pill-icon-gradient"></div>
+            Gradient
+          </div>
+          <div class="toggle-pill" id="mode-mixed" onclick="setColorMode('mixed')">
+            <div class="pill-icon pill-icon-mixed">
+              <span style="background:#9b87ff"></span>
+              <span style="background:#ff6b9d"></span>
+              <span style="background:#4ecdc4"></span>
+            </div>
+            Mixed
+          </div>
+          <div class="toggle-pill" id="mode-random" onclick="setColorMode('random')">
+            <div class="pill-icon pill-icon-random"></div>
+            Random
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDERS -->
+      <div class="section">
+        <div class="section-title">Behavior</div>
+
+        <div class="slider-row">
+          <div class="slider-header">
+            <span class="slider-label">Trail length</span>
+            <span class="slider-val" id="val-trail">20</span>
+          </div>
+          <input type="range" min="3" max="60" value="20" oninput="setSetting('trailLength',+this.value,'val-trail')" />
+        </div>
+
+        <div class="slider-row">
+          <div class="slider-header">
+            <span class="slider-label">Particle size</span>
+            <span class="slider-val" id="val-size">14px</span>
+          </div>
+          <input type="range" min="4" max="48" value="14" oninput="setSetting('size',+this.value,'val-size','px')" />
+        </div>
+
+        <div class="slider-row">
+          <div class="slider-header">
+            <span class="slider-label">Fade speed</span>
+            <span class="slider-val" id="val-fade">0.06</span>
+          </div>
+          <input type="range" min="1" max="20" value="6" oninput="setSetting('fade',this.value/100,'val-fade')" />
+        </div>
+
+        <div class="slider-row">
+          <div class="slider-header">
+            <span class="slider-label">Compactness</span>
+            <span class="slider-val" id="val-compact">1.0</span>
+          </div>
+          <input type="range" min="1" max="30" value="10" oninput="setSetting('compact',this.value/10,'val-compact')" />
+        </div>
+
+        <div class="slider-row">
+          <div class="slider-header">
+            <span class="slider-label">Spread / scatter</span>
+            <span class="slider-val" id="val-spread">0px</span>
+          </div>
+          <input type="range" min="0" max="40" value="0" oninput="setSetting('spread',+this.value,'val-spread','px')" />
+        </div>
+
+        <div class="slider-row">
+          <div class="slider-header">
+            <span class="slider-label">Rotation speed</span>
+            <span class="slider-val" id="val-rot">0°/f</span>
+          </div>
+          <input type="range" min="0" max="30" value="0" oninput="setSetting('rotSpeed',+this.value,'val-rot','°/f')" />
+        </div>
+
+        <div class="slider-row">
+          <div class="slider-header">
+            <span class="slider-label">Gravity / float</span>
+            <span class="slider-val" id="val-gravity">0.0</span>
+          </div>
+          <input type="range" min="-10" max="10" value="0"
+            oninput="setSetting('gravity',this.value/10,'val-gravity')" />
+        </div>
+
+        <div class="slider-row">
+          <div class="slider-header">
+            <span class="slider-label">Offset Y</span>
+            <span class="slider-val" id="val-oy">0px</span>
+          </div>
+          <input type="range" min="-40" max="40" value="0" oninput="setSetting('offsetY',+this.value,'val-oy','px')" />
+        </div>
+      </div>
+
+      <!-- CHASE / LAG -->
+      <div class="section">
+        <div class="section-title" style="display:flex;align-items:center;justify-content:space-between;">
+          <span>Chase &amp; lag</span>
+          <button class="chase-toggle" id="chase-toggle" onclick="toggleChase(this)">Chase OFF</button>
+        </div>
+
+        <div class="slider-row">
+          <div class="slider-header">
+            <span class="slider-label">Chase speed</span>
+            <span class="slider-val" id="val-chase">0.12</span>
+          </div>
+          <input type="range" min="1" max="50" value="12"
+            oninput="setSetting('chaseSpeed',this.value/100,'val-chase')" />
+        </div>
+
+        <div class="slider-row">
+          <div class="slider-header">
+            <span class="slider-label">Min gap distance</span>
+            <span class="slider-val" id="val-cdist">0px</span>
+          </div>
+          <input type="range" min="0" max="200" value="0"
+            oninput="setSetting('chaseDistance',+this.value,'val-cdist','px')" />
+        </div>
+
+        <div class="section-title" style="margin-top:10px;margin-bottom:8px;">Chase mode</div>
+        <div class="blend-grid">
+          <div class="blend-btn chase-mode-btn active" onclick="setChaseMode('smooth',this)">Smooth</div>
+          <div class="blend-btn chase-mode-btn" onclick="setChaseMode('elastic',this)">Elastic</div>
+          <div class="blend-btn chase-mode-btn" onclick="setChaseMode('delayed',this)">Delayed</div>
+        </div>
+        <div style="margin-top:10px;font-size:10px;color:var(--muted);line-height:1.6;" id="chase-desc">
+          Smooth — ghost lerps toward cursor at a fixed rate each frame.
+        </div>
+      </div>
+
+      <!-- BLEND MODE -->
+      <div class="section">
+        <div class="section-title">Blend mode</div>
+        <div class="blend-grid">
+          <div class="blend-btn active" id="blend-normal" onclick="setBlend('normal',this)">Normal</div>
+          <div class="blend-btn" id="blend-screen" onclick="setBlend('screen',this)">Screen</div>
+          <div class="blend-btn" id="blend-multiply" onclick="setBlend('multiply',this)">Multiply</div>
+          <div class="blend-btn" id="blend-overlay" onclick="setBlend('overlay',this)">Overlay</div>
+          <div class="blend-btn" id="blend-color-dodge" onclick="setBlend('color-dodge',this)">Dodge</div>
+          <div class="blend-btn" id="blend-difference" onclick="setBlend('difference',this)">Difference</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CANVAS -->
+    <div class="canvas-area" id="canvas">
+      <div class="grid-bg"></div>
+      <div class="canvas-label">Move your cursor here</div>
+    </div>
+
+    <!-- RIGHT CODE PANEL -->
+    <div class="code-panel">
+      <div class="code-tabs">
+        <div class="code-tab active" onclick="setCodeTab('js',this)">JS</div>
+        <div class="code-tab" onclick="setCodeTab('css',this)">CSS</div>
+        <div class="code-tab" onclick="setCodeTab('html',this)">HTML</div>
+        <div class="code-tab" onclick="setCodeTab('react',this)">React</div>
+        <div class="code-tab" onclick="setCodeTab('vue',this)">Vue</div>
+        <div class="code-tab" onclick="setCodeTab('angular',this)">Angular</div>
+      </div>
+      <div class="code-body" id="code-body">
+        <pre id="code-out"></pre>
+      </div>
+      <button class="copy-btn" id="copy-btn" onclick="copyCode()">Copy code</button>
+    </div>
+
+  </div>
   <script type="module" src="/src/main.js"></script>
 </body>
+
 </html>
