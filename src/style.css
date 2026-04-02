@@ -3,15 +3,16 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --bg: #0d0d0f;
-    --panel: #141416;
-    --panel2: #1a1a1d;
-    --border: rgba(255,255,255,0.07);
-    --border2: rgba(255,255,255,0.13);
-    --text: #f0eff0;
-    --muted: #888;
-    --accent: #9b87ff;
-    --accent2: #c4b8ff;
+    --bg: #09080f;
+    --panel: #16122a;
+    --panel2: #1f1840;
+    --border: rgba(115,85,232,0.18);
+    --border2: rgba(163,128,255,0.22);
+    --text: #ede6ff;
+    --muted: #7a6e9a;
+    --accent: #7355e8;
+    --accent-lit: #a480ff;
+    --accent2: #c9b0ff;
     --r: 8px;
   }
 
@@ -137,7 +138,7 @@
   .shape-btn:hover { border-color: var(--accent); }
   .shape-btn.active {
     border-color: var(--accent);
-    background: rgba(155,135,255,0.12);
+    background: rgba(115,85,232,0.15);
   }
   .shape-btn svg { width: 28px; height: 28px; }
 
@@ -244,7 +245,7 @@
   .color-add-btn:hover {
     border-color: var(--accent);
     color: var(--accent);
-    background: rgba(155,135,255,0.08);
+    background: rgba(115,85,232,0.10);
   }
   .color-add-btn.remove {
     border-style: solid;
@@ -303,9 +304,9 @@
   }
   .toggle-pill:hover { border-color: var(--accent); color: var(--accent); }
   .toggle-pill.active {
-    background: rgba(155,135,255,0.15);
+    background: rgba(115,85,232,0.18);
     border-color: var(--accent);
-    color: var(--accent);
+    color: var(--accent-lit);
   }
   .pill-icon {
     height: 10px;
@@ -314,7 +315,7 @@
     overflow: hidden;
     position: relative;
   }
-  .pill-icon-gradient { background: linear-gradient(to right, #9b87ff, #ff6b9d); }
+  .pill-icon-gradient { background: linear-gradient(to right, #7355e8, #a480ff); }
   .pill-icon-mixed {
     display: flex;
   }
@@ -322,7 +323,7 @@
     flex: 1; height: 100%;
   }
   .pill-icon-random {
-    background: linear-gradient(to right, #fbbf24, #9b87ff, #34d399, #ff6b9d);
+    background: linear-gradient(to right, #fbbf24, #7355e8, #34d399, #a480ff);
     background-size: 200% 100%;
   }
 
@@ -430,8 +431,8 @@
     flex: 1;
     position: relative;
     overflow: hidden;
-    background: radial-gradient(ellipse at 30% 40%, rgba(100,80,200,0.06) 0%, transparent 60%),
-                radial-gradient(ellipse at 70% 70%, rgba(80,160,200,0.04) 0%, transparent 50%),
+    background: radial-gradient(ellipse at 30% 40%, rgba(115,85,232,0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 70%, rgba(164,128,255,0.05) 0%, transparent 50%),
                 var(--bg);
   }
 
@@ -506,7 +507,7 @@
     font-family: 'DM Mono', monospace;
     font-size: 11px;
     line-height: 1.7;
-    color: #c9c7f0;
+    color: #c9b0ff;
     white-space: pre-wrap;
     word-break: break-all;
   }

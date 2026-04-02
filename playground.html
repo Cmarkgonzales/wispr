@@ -25,8 +25,8 @@
     }
 
     .site-header {
-      border-bottom: 1px solid rgba(255, 255, 255, 0.14);
-      background: rgba(15, 17, 24, 0.92);
+      border-bottom: 1px solid rgba(115, 85, 232, 0.20);
+      background: rgba(9, 8, 15, 0.92);
       backdrop-filter: blur(8px);
       z-index: 120;
     }
@@ -43,36 +43,36 @@
     }
 
     .site-brand {
-      color: #eff2fa;
+      color: #ede6ff;
       text-decoration: none;
       font-size: 1.1rem;
       font-weight: 700;
       letter-spacing: 0.02em;
     }
 
-    .site-brand span { color: #9b87ff; }
+    .site-brand span { color: #7355e8; }
 
     .site-nav { display: flex; gap: 8px; flex-wrap: wrap; }
 
     .site-nav a {
-      border: 1px solid rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(115, 85, 232, 0.20);
       border-radius: 999px;
-      color: #eff2fa;
+      color: #ede6ff;
       text-decoration: none;
       padding: 6px 12px;
       font-size: 0.92rem;
-      background: rgba(255, 255, 255, 0.03);
+      background: rgba(115, 85, 232, 0.04);
     }
 
     .site-nav a:hover,
     .site-nav a.active {
-      border-color: #9b87ff;
+      border-color: #7355e8;
       color: #fff;
     }
 
     .site-footer {
-      border-top: 1px solid rgba(255, 255, 255, 0.14);
-      background: rgba(14, 16, 22, 0.9);
+      border-top: 1px solid rgba(115, 85, 232, 0.20);
+      background: rgba(9, 8, 15, 0.9);
       z-index: 120;
     }
 
@@ -222,11 +222,12 @@
         <div class="slider-row"><div class="slider-header"><span class="slider-label">Rotation speed</span><span class="slider-val" id="val-rot">0°/f</span></div><input type="range" min="0" max="30" value="0" oninput="setSetting('rotSpeed',+this.value,'val-rot','°/f')" /></div>
         <div class="slider-row"><div class="slider-header"><span class="slider-label">Gravity / float</span><span class="slider-val" id="val-gravity">0.0</span></div><input type="range" min="-10" max="10" value="0" oninput="setSetting('gravity',this.value/10,'val-gravity')" /></div>
         <div class="slider-row"><div class="slider-header"><span class="slider-label">Offset Y</span><span class="slider-val" id="val-oy">0px</span></div><input type="range" min="-40" max="40" value="0" oninput="setSetting('offsetY',+this.value,'val-oy','px')" /></div>
+        <div class="slider-row"><div class="slider-header"><span class="slider-label">Glow radius</span><span class="slider-val" id="val-glow">8px</span></div><input type="range" min="0" max="30" value="8" oninput="setGlow(+this.value,'val-glow')" /></div>
       </div>
 
       <div class="section">
-        <div class="section-title" style="display:flex;align-items:center;justify-content:space-between;"><span>Chase &amp; lag</span><button class="chase-toggle" id="chase-toggle" onclick="toggleChase(this)">Chase OFF</button></div>
-        <div class="slider-row"><div class="slider-header"><span class="slider-label">Chase speed</span><span class="slider-val" id="val-chase">0.12</span></div><input type="range" min="1" max="50" value="12" oninput="setSetting('chaseSpeed',this.value/100,'val-chase')" /></div>
+        <div class="section-title" style="display:flex;align-items:center;justify-content:space-between;"><span>Chase &amp; lag</span><button class="chase-toggle active" id="chase-toggle" onclick="toggleChase(this)">Chase ON</button></div>
+        <div class="slider-row"><div class="slider-header"><span class="slider-label">Chase speed</span><span class="slider-val" id="val-chase">0.1</span></div><input type="range" min="1" max="50" value="10" oninput="setSetting('chaseSpeed',this.value/100,'val-chase')" /></div>
         <div class="slider-row"><div class="slider-header"><span class="slider-label">Min gap distance</span><span class="slider-val" id="val-cdist">0px</span></div><input type="range" min="0" max="200" value="0" oninput="setSetting('chaseDistance',+this.value,'val-cdist','px')" /></div>
         <div class="section-title" style="margin-top:10px;margin-bottom:8px;">Chase mode</div>
         <div class="blend-grid">

@@ -3,7 +3,7 @@ import './style.css';
 // ── STATE ──────────────────────────────────────────────
 const S = {
   shape: 'circle',
-  colors: ['#9b87ff','#ff6b9d','#4ecdc4'],
+  colors: ['#7355e8','#a480ff','#4ecdc4'],
   colorCount: 2,
   colorMode: 'gradient',
   trailLength: 20,
@@ -15,9 +15,10 @@ const S = {
   gravity: 0,
   offsetY: 0,
   blend: 'normal',
+  glow: 8,
   // chase / lag
-  chaseEnabled: false,
-  chaseSpeed: 0.12,
+  chaseEnabled: true,
+  chaseSpeed: 0.1,
   chaseDistance: 0,
   chaseMode: 'smooth',  // 'smooth' | 'elastic' | 'delayed'
 };
@@ -96,12 +97,12 @@ function spawnParticle(x, y) {
   particles.forEach((p2, i) => {
     p2.idx = i;
     const c = getColor(i, S.trailLength);
+    p2.color = c;
     applyColorToEl(p2.el, c);
   });
 }
 
 function createParticleEl(x, y) {
-  const canvas = document.getElementById('canvas');
   const el = document.createElement('div');
   el.className = 'trail-particle';
   el.style.left = x + 'px';
@@ -112,6 +113,7 @@ function createParticleEl(x, y) {
   el.style.height = sz + 'px';
   el.style.marginLeft = -sz/2 + 'px';
   el.style.marginTop = -sz/2 + 'px';
+  if (S.glow > 0) el.style.filter = `drop-shadow(0 0 ${S.glow}px #fff)`;
   el.innerHTML = getShapeSVG(S.shape, sz, '#fff');
   document.body.appendChild(el);
   return el;
@@ -127,6 +129,7 @@ function applyColorToEl(el, color) {
   } else {
     svg.querySelectorAll('[stroke="#fff"]').forEach(n => n.setAttribute('stroke', color));
   }
+  el.style.filter = S.glow > 0 ? `drop-shadow(0 0 ${S.glow}px ${color})` : '';
 }
 
 function getShapeSVG(shape, sz, color) {
@@ -220,6 +223,11 @@ function animate() {
       p.el.style.transform = `rotate(${p.rot}deg) scale(${Math.max(0,scale)})`;
       p.el.style.left = p.x + 'px';
       p.el.style.top = p.y + 'px';
+      // bloom glow outward as particles age so the full trail stays luminous
+      if (S.glow > 0 && p.color) {
+        const bloom = S.glow * (1 + (1 - Math.max(p.life, 0)) * 2);
+        p.el.style.filter = `drop-shadow(0 0 ${bloom}px ${p.color})`;
+      }
     }
 
     if (p.life <= 0 && p.el && p.el.parentNode) {
@@ -366,6 +374,18 @@ function setBlend(mode, el) {
   updateCode();
 }
 
+function setGlow(val, valId) {
+  S.glow = val;
+  document.getElementById(valId).textContent = val + 'px';
+  // live-update all existing particles
+  particles.forEach((p, i) => {
+    const color = getColor(i, S.trailLength);
+    p.color = color;
+    if (p.el) p.el.style.filter = val > 0 ? `drop-shadow(0 0 ${val}px ${color})` : '';
+  });
+  updateCode();
+}
+
 // ── CHASE CONTROLS ─────────────────────────────────────
 function toggleChase(el) {
   S.chaseEnabled = !S.chaseEnabled;
@@ -412,7 +432,7 @@ const PRESETS = {
 
 const DEFAULT_STATE = {
   shape: 'circle',
-  colors: ['#9b87ff','#ff6b9d','#4ecdc4'],
+  colors: ['#7355e8','#a480ff','#4ecdc4'],
   colorCount: 2,
   colorMode: 'gradient',
   trailLength: 20,
@@ -529,6 +549,7 @@ ${p}  rotSpeed: ${S.rotSpeed},
 ${p}  gravity: ${S.gravity.toFixed(1)},
 ${p}  offsetY: ${S.offsetY},
 ${p}  blend: '${S.blend}',
+${p}  glow: ${S.glow},
 ${p}  chaseEnabled: ${S.chaseEnabled},
 ${p}  chaseSpeed: ${S.chaseSpeed.toFixed(2)},
 ${p}  chaseDistance: ${S.chaseDistance},
@@ -595,6 +616,7 @@ ${p}    particles.forEach((p, i) => {
 ${p}      const c = getColor(cfg, i, cfg.trailLength);
 ${p}      p.el?.querySelectorAll('[fill="#fff"]').forEach(n => n.setAttribute('fill', c));
 ${p}      p.el?.querySelectorAll('[stroke="#fff"]').forEach(n => n.setAttribute('stroke', c));
+${p}      if (p.el && cfg.glow > 0) p.el.style.filter = \`drop-shadow(0 0 \${cfg.glow}px \${c})\`;
 ${p}    });
 ${p}  }
 
@@ -840,6 +862,7 @@ Object.assign(window, {
   setColorMode,
   setSetting,
   setBlend,
+  setGlow,
   toggleChase,
   setChaseMode,
   setCanvasBg,

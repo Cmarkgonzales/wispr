@@ -16,18 +16,19 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <style>
     :root {
-      --bg: #0d0f14;
-      --border: rgba(255, 255, 255, 0.14);
-      --text: #eff2fa;
-      --muted: #b9c0d6;
-      --accent: #9b87ff;
+      --bg: #09080f;
+      --border: rgba(115, 85, 232, 0.20);
+      --text: #ede6ff;
+      --muted: #7a6e9a;
+      --accent: #7355e8;
+      --accent-lit: #a480ff;
     }
 
     * { box-sizing: border-box; }
 
     body {
       margin: 0;
-      background: radial-gradient(circle at 20% 10%, #1f2540 0, #0d0f14 42%, #0a0b10 100%);
+      background: radial-gradient(circle at 20% 10%, #1f1840 0, #09080f 50%, #05040a 100%);
       color: var(--text);
       font-family: Inter, system-ui, -apple-system, Segoe UI, sans-serif;
       line-height: 1.65;
@@ -38,7 +39,7 @@
 
     .site-header {
       border-bottom: 1px solid var(--border);
-      background: rgba(15, 17, 24, 0.92);
+      background: rgba(9, 8, 15, 0.92);
       backdrop-filter: blur(8px);
     }
 
@@ -118,7 +119,7 @@
     .card {
       border: 1px solid var(--border);
       border-radius: 12px;
-      background: rgba(255, 255, 255, 0.03);
+      background: rgba(115, 85, 232, 0.06);
       padding: 14px;
     }
 
@@ -127,7 +128,7 @@
 
     .site-footer {
       border-top: 1px solid var(--border);
-      background: rgba(14, 16, 22, 0.9);
+      background: rgba(9, 8, 15, 0.9);
     }
 
     .site-footer-inner {
@@ -188,5 +189,6 @@
       <p><a href="/support.html">Need help?</a> Visit Support.</p>
     </div>
   </footer>
+  <script src="/src/trail-ambient.js"></script>
 </body>
 </html>

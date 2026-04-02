@@ -10,10 +10,10 @@
   <meta name="robots" content="index,follow,max-snippet:-1" />
   <link rel="canonical" href="https://wispr.dev/guides/" />
   <style>
-    :root { --bg:#0d0f14; --panel:#161a22; --border:rgba(255,255,255,.14); --text:#eff2fa; --muted:#b9c0d6; --accent:#9b87ff; }
+    :root { --bg:#09080f; --panel:#16122a; --border:rgba(115,85,232,.20); --text:#ede6ff; --muted:#7a6e9a; --accent:#7355e8; --accent-lit:#a480ff; }
     * { box-sizing: border-box; }
     body { margin: 0; background: var(--bg); color: var(--text); font-family: Inter, system-ui, sans-serif; line-height: 1.65; min-height: 100vh; display: grid; grid-template-rows: auto 1fr auto; }
-    .site-header { border-bottom: 1px solid var(--border); background: rgba(15,17,24,.92); backdrop-filter: blur(8px); }
+    .site-header { border-bottom: 1px solid var(--border); background: rgba(9,8,15,.92); backdrop-filter: blur(8px); }
     .site-shell { max-width: 1100px; margin: 0 auto; padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
     .site-brand { color: var(--text); text-decoration: none; font-size: 1.1rem; font-weight: 700; letter-spacing: .02em; }
     .site-brand span { color: var(--accent); }
@@ -21,9 +21,9 @@
     .site-nav a { border: 1px solid var(--border); border-radius: 999px; color: var(--text); text-decoration: none; padding: 6px 12px; font-size: .92rem; background: rgba(255,255,255,.03); }
     .site-nav a:hover, .site-nav a.active { border-color: var(--accent); color: #fff; }
     main { width: 100%; max-width: 920px; margin: 0 auto; padding: 34px 20px 56px; }
-    a { color: #96a9ff; }
-    .card { border: 1px solid #2a2d39; border-radius: 10px; padding: 14px; background: #181b24; margin-bottom: 12px; }
-    .site-footer { border-top: 1px solid var(--border); background: rgba(14,16,22,.9); }
+    a { color: #a480ff; }
+    .card { border: 1px solid #2a1e50; border-radius: 10px; padding: 14px; background: #16122a; margin-bottom: 12px; }
+    .site-footer { border-top: 1px solid var(--border); background: rgba(9,8,15,.9); }
     .site-footer-inner { max-width: 1100px; margin: 0 auto; padding: 14px 20px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
     .site-footer p { margin: 0; color: var(--muted); font-size: .92rem; }
     .site-footer a { color: var(--text); text-decoration: none; }
@@ -74,6 +74,7 @@
       <p><a href="/support.html">Need help?</a> Visit Support.</p>
     </div>
   </footer>
+  <script src="/src/trail-ambient.js"></script>
 </body>
 
 </html>
