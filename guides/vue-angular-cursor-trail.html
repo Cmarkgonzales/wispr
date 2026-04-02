@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vue & Angular Cursor Trail Effect Guide | Wispr</title>
+  <meta name="description"
+    content="Implement cursor trail effects for Vue and Angular apps using Wispr's export-ready custom cursor trail code." />
+  <meta name="robots" content="index,follow,max-snippet:-1" />
+  <link rel="canonical" href="https://wispr.dev/guides/vue-angular-cursor-trail.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Vue and Angular Cursor Trail Guide" />
+  <meta property="og:description" content="Use Wispr exports to add custom cursor trail effects in Vue and Angular projects." />
+  <meta property="og:url" content="https://wispr.dev/guides/vue-angular-cursor-trail.html" />
+  <meta name="twitter:card" content="summary" />
+  <style>
+    :root { --bg:#0d0f14; --panel:#161a22; --border:rgba(255,255,255,.14); --text:#eff2fa; --muted:#b9c0d6; --accent:#9b87ff; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); font-family: Inter, system-ui, sans-serif; line-height: 1.65; min-height: 100vh; display: grid; grid-template-rows: auto 1fr auto; }
+    .site-header { border-bottom: 1px solid var(--border); background: rgba(15,17,24,.92); backdrop-filter: blur(8px); }
+    .site-shell { max-width: 1100px; margin: 0 auto; padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+    .site-brand { color: var(--text); text-decoration: none; font-size: 1.1rem; font-weight: 700; letter-spacing: .02em; }
+    .site-brand span { color: var(--accent); }
+    .site-nav { display: flex; gap: 8px; flex-wrap: wrap; }
+    .site-nav a { border: 1px solid var(--border); border-radius: 999px; color: var(--text); text-decoration: none; padding: 6px 12px; font-size: .92rem; background: rgba(255,255,255,.03); }
+    .site-nav a:hover, .site-nav a.active { border-color: var(--accent); color: #fff; }
+    main { width: 100%; max-width: 860px; margin: 0 auto; padding: 34px 20px 56px; }
+    a { color: #8fe7c0; }
+    h1, h2 { line-height: 1.25; }
+    .site-footer { border-top: 1px solid var(--border); background: rgba(14,16,22,.9); }
+    .site-footer-inner { max-width: 1100px; margin: 0 auto; padding: 14px 20px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .site-footer p { margin: 0; color: var(--muted); font-size: .92rem; }
+    .site-footer a { color: var(--text); text-decoration: none; }
+    .site-footer a:hover { color: var(--accent); }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="site-shell">
+      <a class="site-brand" href="/">wispr<span>.</span></a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="/">Home</a>
+        <a href="/playground.html">Playground</a>
+        <a class="active" href="/guides/">Guides</a>
+        <a href="/support.html">Support</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <h1>Cursor Trail Effect for Vue and Angular</h1>
+    <p>
+      This guide covers a practical way to use Wispr for <strong>cursor trail effect for React/Vue/Angular</strong> workflows,
+      with a focus here on Vue and Angular implementation details.
+    </p>
+
+    <h2>Vue approach</h2>
+    <p>
+      Export from Wispr's Vue tab, wrap the generated behavior in a component, and mount once in your root layout. Keep props minimal
+      and expose only what your design system needs.
+    </p>
+
+    <h2>Angular approach</h2>
+    <p>
+      Use the Angular export in a dedicated component, then place it at app shell level. Avoid deeply coupling the effect to page
+      state so route transitions stay predictable.
+    </p>
+
+    <h2>Internal links</h2>
+    <p>
+      Start from the <a href="/playground.html">Wispr cursor trail designer</a> to generate your base effect.
+      For CSS-first implementations, see the <a href="/guides/cursor-trail-effect-css.html">CSS guide</a>.
+      For component-level React work, see the <a href="/guides/react-cursor-trail-component.html">React guide</a>.
+    </p>
+    <p><a href="/playground.html">Generate in Wispr</a></p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <p>Wispr cursor trail designer.</p>
+      <p><a href="/support.html">Need help?</a> Visit Support.</p>
+    </div>
+  </footer>
+</body>
+
+</html>

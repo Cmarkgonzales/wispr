@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wispr Support | Help, Contact, and Troubleshooting</title>
+  <meta name="description"
+    content="Contact Wispr support, report issues, request features, and get troubleshooting help for cursor trail implementations." />
+  <meta name="robots" content="index,follow,max-snippet:-1" />
+  <link rel="canonical" href="https://wispr.dev/support.html" />
+  <style>
+    :root { --bg:#0d0f14; --panel:#161a22; --border:rgba(255,255,255,.14); --text:#eff2fa; --muted:#b9c0d6; --accent:#9b87ff; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); font-family: Inter, system-ui, sans-serif; line-height: 1.65; min-height: 100vh; display: grid; grid-template-rows: auto 1fr auto; }
+    .site-header { border-bottom: 1px solid var(--border); background: rgba(15,17,24,.92); backdrop-filter: blur(8px); }
+    .site-shell { max-width: 1100px; margin: 0 auto; padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+    .site-brand { color: var(--text); text-decoration: none; font-size: 1.1rem; font-weight: 700; letter-spacing: .02em; }
+    .site-brand span { color: var(--accent); }
+    .site-nav { display: flex; gap: 8px; flex-wrap: wrap; }
+    .site-nav a { border: 1px solid var(--border); border-radius: 999px; color: var(--text); text-decoration: none; padding: 6px 12px; font-size: .92rem; background: rgba(255,255,255,.03); }
+    .site-nav a:hover, .site-nav a.active { border-color: var(--accent); color: #fff; }
+    main { width: 100%; max-width: 900px; margin: 0 auto; padding: 34px 20px 56px; }
+    a { color: #8ed6ff; }
+    .box { border: 1px solid #2c303a; border-radius: 10px; padding: 14px; background: #181b22; margin-bottom: 12px; }
+    .site-footer { border-top: 1px solid var(--border); background: rgba(14,16,22,.9); }
+    .site-footer-inner { max-width: 1100px; margin: 0 auto; padding: 14px 20px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .site-footer p { margin: 0; color: var(--muted); font-size: .92rem; }
+    .site-footer a { color: var(--text); text-decoration: none; }
+    .site-footer a:hover { color: var(--accent); }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="site-shell">
+      <a class="site-brand" href="/">wispr<span>.</span></a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="/">Home</a>
+        <a href="/playground.html">Playground</a>
+        <a href="/guides/">Guides</a>
+        <a class="active" href="/support.html">Support</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <h1>Support Wispr</h1>
+    <p>Need help shipping a cursor trail effect? Use the channels below for direct support and product feedback.</p>
+
+    <section class="box">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:support@wispr.dev">support@wispr.dev</a></p>
+      <p>Response target: within 2 business days.</p>
+    </section>
+
+    <section class="box">
+      <h2>Report an Issue</h2>
+      <p>
+        Include your browser version, framework (if any), and the exact settings used in the
+        <a href="/playground.html">playground</a> so support can reproduce quickly.
+      </p>
+    </section>
+
+    <section class="box">
+      <h2>Before You Contact Support</h2>
+      <ul>
+        <li>Check the <a href="/guides/">Guides and FAQ</a> for implementation patterns.</li>
+        <li>Validate with a shorter trail and reduced particle size for performance tuning.</li>
+        <li>Check the guides for the most up-to-date implementation recommendations.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <p>Wispr cursor trail designer.</p>
+      <p><a href="/support.html">Need help?</a> Visit Support.</p>
+    </div>
+  </footer>
+</body>
+
+</html>

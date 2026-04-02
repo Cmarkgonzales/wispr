@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wispr Guides & FAQ | Cursor Trail Tutorials</title>
+  <meta name="description"
+    content="Browse Wispr guides for CSS, React, Vue, and Angular cursor trail effects plus FAQs for implementation and performance." />
+  <meta name="robots" content="index,follow,max-snippet:-1" />
+  <link rel="canonical" href="https://wispr.dev/guides/" />
+  <style>
+    :root { --bg:#0d0f14; --panel:#161a22; --border:rgba(255,255,255,.14); --text:#eff2fa; --muted:#b9c0d6; --accent:#9b87ff; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); font-family: Inter, system-ui, sans-serif; line-height: 1.65; min-height: 100vh; display: grid; grid-template-rows: auto 1fr auto; }
+    .site-header { border-bottom: 1px solid var(--border); background: rgba(15,17,24,.92); backdrop-filter: blur(8px); }
+    .site-shell { max-width: 1100px; margin: 0 auto; padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+    .site-brand { color: var(--text); text-decoration: none; font-size: 1.1rem; font-weight: 700; letter-spacing: .02em; }
+    .site-brand span { color: var(--accent); }
+    .site-nav { display: flex; gap: 8px; flex-wrap: wrap; }
+    .site-nav a { border: 1px solid var(--border); border-radius: 999px; color: var(--text); text-decoration: none; padding: 6px 12px; font-size: .92rem; background: rgba(255,255,255,.03); }
+    .site-nav a:hover, .site-nav a.active { border-color: var(--accent); color: #fff; }
+    main { width: 100%; max-width: 920px; margin: 0 auto; padding: 34px 20px 56px; }
+    a { color: #96a9ff; }
+    .card { border: 1px solid #2a2d39; border-radius: 10px; padding: 14px; background: #181b24; margin-bottom: 12px; }
+    .site-footer { border-top: 1px solid var(--border); background: rgba(14,16,22,.9); }
+    .site-footer-inner { max-width: 1100px; margin: 0 auto; padding: 14px 20px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .site-footer p { margin: 0; color: var(--muted); font-size: .92rem; }
+    .site-footer a { color: var(--text); text-decoration: none; }
+    .site-footer a:hover { color: var(--accent); }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="site-shell">
+      <a class="site-brand" href="/">wispr<span>.</span></a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="/">Home</a>
+        <a href="/playground.html">Playground</a>
+        <a class="active" href="/guides/">Guides</a>
+        <a href="/support.html">Support</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <h1>Wispr Guides and FAQ</h1>
+    <p>Learn how to implement and tune cursor trails across stacks, then generate production-ready code in the playground.</p>
+
+    <section class="card">
+      <h2>Guides</h2>
+      <ul>
+        <li><a href="/guides/cursor-trail-effect-css.html">CSS Cursor Trail Generator Guide</a></li>
+        <li><a href="/guides/react-cursor-trail-component.html">React Cursor Trail Component Guide</a></li>
+        <li><a href="/guides/vue-angular-cursor-trail.html">Vue and Angular Cursor Trail Guide</a></li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>FAQ</h2>
+      <h3>Where should I start?</h3>
+      <p>Start in the <a href="/playground.html">playground</a>, then pick the framework tab that matches your stack.</p>
+      <h3>How do I keep effects lightweight?</h3>
+      <p>Use shorter trails, lower particle size, and moderate fade/chase settings for smoother rendering.</p>
+      <h3>Can I use the same visual style across frameworks?</h3>
+      <p>Yes. Configure once in Wispr and export equivalent snippets for JavaScript, React, Vue, and Angular.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <p>Wispr cursor trail designer.</p>
+      <p><a href="/support.html">Need help?</a> Visit Support.</p>
+    </div>
+  </footer>
+</body>
+
+</html>
