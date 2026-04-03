@@ -6,9 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Wispr Guides & FAQ | Cursor Trail Tutorials</title>
   <meta name="description"
-    content="Browse Wispr guides for CSS, React, Vue, and Angular cursor trail effects plus FAQs for implementation and performance." />
+    content="Wispr guides: stack tutorials plus a full list of playground features — presets, shapes, chase modes, exports, and more." />
   <meta name="robots" content="index,follow,max-snippet:-1" />
   <link rel="canonical" href="https://wispr.dev/guides/" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Wispr Guides — Cursor trail effects" />
+  <meta property="og:description" content="Short guides for CSS, React, Vue, and Angular. Start in the playground, then integrate exported code." />
+  <meta property="og:url" content="https://wispr.dev/guides/" />
+  <meta name="twitter:card" content="summary" />
   <style>
     :root { --bg:#09080f; --panel:#16122a; --border:rgba(115,85,232,.20); --text:#ede6ff; --muted:#7a6e9a; --accent:#7355e8; --accent-lit:#a480ff; }
     * { box-sizing: border-box; }
@@ -23,6 +29,9 @@
     main { width: 100%; max-width: 920px; margin: 0 auto; padding: 34px 20px 56px; }
     a { color: #a480ff; }
     .card { border: 1px solid #2a1e50; border-radius: 10px; padding: 14px; background: #16122a; margin-bottom: 12px; }
+    .card ul.features { margin: 0; padding-left: 1.2em; color: #c9c2e8; }
+    .card ul.features li { margin-bottom: 8px; }
+    code { font-family: ui-monospace, monospace; font-size: 0.92em; }
     .site-footer { border-top: 1px solid var(--border); background: rgba(9,8,15,.9); }
     .site-footer-inner { max-width: 1100px; margin: 0 auto; padding: 14px 20px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
     .site-footer p { margin: 0; color: var(--muted); font-size: .92rem; }
@@ -45,33 +54,53 @@
   </header>
 
   <main>
-    <h1>Wispr Guides and FAQ</h1>
-    <p>Learn how to implement and tune cursor trails across stacks, then generate production-ready code in the playground.</p>
+    <h1>Guides</h1>
+    <p style="color: var(--muted); max-width: 56ch;">Pick your stack and wire in the snippet from the matching playground tab. Everything the designer can do today is summarized below.</p>
 
-    <section class="card">
-      <h2>Guides</h2>
-      <ul>
-        <li><a href="/guides/cursor-trail-effect-css.html">CSS Cursor Trail Generator Guide</a></li>
-        <li><a href="/guides/react-cursor-trail-component.html">React Cursor Trail Component Guide</a></li>
-        <li><a href="/guides/vue-angular-cursor-trail.html">Vue and Angular Cursor Trail Guide</a></li>
+    <section class="card" id="features" aria-labelledby="features-heading">
+      <h2 id="features-heading">Playground features</h2>
+      <ul class="features">
+        <li><strong>Canvas</strong> — live preview with dark, light, or gradient background.</li>
+        <li><strong>Presets</strong> — Galaxy, Fire, Candy, Neon, Snow, Gold, or start from scratch.</li>
+        <li><strong>Look</strong> — particle shapes, up to three colors, gradient / mixed / random modes, blend modes, optional glow.</li>
+        <li><strong>Motion</strong> — trail length, size, fade, compactness, scatter, rotation, gravity, vertical offset.</li>
+        <li><strong>Chase &amp; lag</strong> — optional lagging trail: smooth, elastic, or delayed follow.</li>
+        <li><strong>Export</strong> — copy or download JS, CSS, HTML, React, Vue, and Angular snippets.</li>
       </ul>
+      <p style="margin: 14px 0 0;"><a href="/playground.html">Open playground</a></p>
     </section>
 
     <section class="card">
-      <h2>FAQ</h2>
-      <h3>Where should I start?</h3>
-      <p>Start in the <a href="/playground.html">playground</a>, then pick the framework tab that matches your stack.</p>
-      <h3>How do I keep effects lightweight?</h3>
-      <p>Use shorter trails, lower particle size, and moderate fade/chase settings for smoother rendering.</p>
-      <h3>Can I use the same visual style across frameworks?</h3>
-      <p>Yes. Configure once in Wispr and export equivalent snippets for JavaScript, React, Vue, and Angular.</p>
+      <h2>Topics</h2>
+      <ul>
+        <li><a href="/guides/cursor-trail-effect-css.html">HTML &amp; CSS / vanilla JS</a> — embed script and styles.</li>
+        <li><a href="/guides/react-cursor-trail-component.html">React</a> — hook + root-level component.</li>
+        <li><a href="/guides/vue-angular-cursor-trail.html">Vue &amp; Angular</a> — <code>script setup</code> and standalone directive.</li>
+      </ul>
+      <p style="margin: 14px 0 0;"><a href="/playground.html">Open playground</a></p>
+    </section>
+
+    <section class="card">
+      <h2>Weekly publishing (team)</h2>
+      <p>
+        Process for turning playground exports into new guides:
+        <a href="/guides/publishing-loop.md">publishing-loop.md</a>
+        (long-tail cadence, snippets, internal links, distribution).
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Quick answers</h2>
+      <p><strong>Start here:</strong> <a href="/playground.html">Playground</a> → tune → copy the tab you need.</p>
+      <p><strong>Same look everywhere:</strong> One design exports to JS, CSS, HTML, React, Vue, and Angular.</p>
+      <p><strong>Lighter on CPU:</strong> Shorter trail, smaller particles, less glow — see <a href="/">home FAQ</a>.</p>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="site-footer-inner">
       <p>Wispr cursor trail designer.</p>
-      <p><a href="/support.html">Need help?</a> Visit Support.</p>
+      <p><a href="/support.html">Support</a></p>
     </div>
   </footer>
   <script src="/src/trail-ambient.js"></script>

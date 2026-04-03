@@ -4,11 +4,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CSS Cursor Trail Generator Guide | Wispr</title>
+  <title>Vanilla JS, CSS &amp; HTML Cursor Trail | Wispr</title>
   <meta name="description"
-    content="Learn how to generate a custom cursor trail effect with CSS and HTML using Wispr's visual cursor trail designer." />
+    content="Use Wispr’s playground to design a mouse trail, then paste JS + CSS or a single HTML snippet into your page." />
   <meta name="robots" content="index,follow,max-snippet:-1" />
   <link rel="canonical" href="https://wispr.dev/guides/cursor-trail-effect-css.html" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="CSS Cursor Trail Generator Guide" />
   <meta property="og:description" content="Create and export CSS cursor trail effects from Wispr in a few steps." />
@@ -28,6 +29,7 @@
     main { width: 100%; max-width: 860px; margin: 0 auto; padding: 34px 20px 56px; }
     a { color: #a480ff; }
     h1, h2 { line-height: 1.25; }
+    code { font-family: ui-monospace, monospace; font-size: 0.92em; color: #c9c2e8; }
     .box { border: 1px solid #2a1e50; border-radius: 10px; padding: 14px; background: #16122a; }
     .site-footer { border-top: 1px solid var(--border); background: rgba(9,8,15,.9); }
     .site-footer-inner { max-width: 1100px; margin: 0 auto; padding: 14px 20px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
@@ -51,43 +53,38 @@
   </header>
 
   <main>
-    <h1>How to Build a CSS Cursor Trail Effect</h1>
-    <p>
-      This guide shows how to use Wispr as a <strong>CSS cursor trail generator</strong> for landing pages and interactive experiences.
-      You will export code and adapt it to your own branding.
+    <h1>Vanilla JS, CSS, and HTML</h1>
+    <p style="color: var(--muted); max-width: 62ch;">
+      Wispr’s <strong>JS</strong> tab outputs the trail engine. The <strong>CSS</strong> tab styles particles; the <strong>HTML</strong> tab wraps both in one paste-ready block. Use that split or the combined snippet — whichever fits your build.
     </p>
 
-    <h2>Step-by-step workflow</h2>
+    <h2>Workflow</h2>
     <ol>
-      <li>Open the <a href="/playground.html">Wispr cursor trail designer</a>.</li>
-      <li>Choose a shape, gradient colors, and blend mode.</li>
-      <li>Tune behavior controls like trail length and fade speed.</li>
-      <li>Copy output from the CSS and HTML tabs.</li>
-      <li>Paste into your project and validate animation smoothness.</li>
+      <li><a href="/playground.html">Open the playground</a> and dial in presets, shapes, colors, chase, blend, and glow.</li>
+      <li>Copy <strong>JS</strong> + <strong>CSS</strong> into your page (or only the <strong>HTML</strong> embed if you want a single drop-in).</li>
+      <li>Load scripts late (e.g. before <code>&lt;/body&gt;</code>) so layout is ready.</li>
+      <li>Test motion on target devices; shorten the trail or reduce glow if frames dip.</li>
     </ol>
 
     <div class="box">
-      <h2>Why this works well for production</h2>
+      <h2>Why Wispr for static sites</h2>
       <p>
-        Wispr helps you balance visual style with performance by exposing controls for compactness, chase lag, and particle count.
-        This keeps your custom cursor trail effect code maintainable.
+        You see the exact trail before you ship. The same sliders control what lands in your export — no hand-tuning magic numbers in DevTools first.
       </p>
     </div>
 
-    <h2>Related guides</h2>
     <p>
-      Continue with
-      <a href="/guides/react-cursor-trail-component.html">React cursor trail component</a>
-      or
-      <a href="/guides/vue-angular-cursor-trail.html">Vue and Angular cursor trail setups</a>.
+      <a href="/guides/react-cursor-trail-component.html">React guide</a> ·
+      <a href="/guides/vue-angular-cursor-trail.html">Vue &amp; Angular</a> ·
+      <a href="/guides/#features">Playground features</a>
     </p>
-    <p><a href="/playground.html">Generate your effect in Wispr</a></p>
+    <p><a href="/playground.html">Open playground</a></p>
   </main>
 
   <footer class="site-footer">
     <div class="site-footer-inner">
       <p>Wispr cursor trail designer.</p>
-      <p><a href="/support.html">Need help?</a> Visit Support.</p>
+      <p><a href="/support.html">Support</a> · <a href="/guides/">Guides</a></p>
     </div>
   </footer>
   <script src="/src/trail-ambient.js"></script>

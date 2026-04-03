@@ -1,0 +1,34 @@
+# Wispr
+
+> Wispr is a browser-based **cursor trail designer** (mouse pointer effects) for websites—not the Cursor IDE. Design trails in a live playground, then export JavaScript, CSS, HTML, React, Vue, or Angular snippets.
+
+## Canonical site
+
+- Production: https://wispr.dev/
+
+## Main pages
+
+- https://wispr.dev/ — Marketing home, FAQ, links to playground and guides.
+- https://wispr.dev/playground.html — Interactive designer: presets, shapes, colors, chase/lag, blend, glow, multi-tab export.
+- https://wispr.dev/guides/ — Guides index + **Playground features** list (`#features`).
+- https://wispr.dev/guides/cursor-trail-effect-css.html — Vanilla JS / CSS / HTML embed.
+- https://wispr.dev/guides/react-cursor-trail-component.html — React export integration.
+- https://wispr.dev/guides/vue-angular-cursor-trail.html — Vue 3 and Angular exports.
+- https://wispr.dev/support.html — Contact and troubleshooting.
+
+## Content ops
+
+- Weekly guide workflow (exports → guides → sitemap): https://wispr.dev/guides/publishing-loop.md
+
+## Machine-readable discovery
+
+- Sitemap: https://wispr.dev/sitemap.xml
+- Robots: https://wispr.dev/robots.txt
+
+## Analytics (build-time)
+
+- Production builds inject GA4 and Google Search Console verification when `VITE_GA_MEASUREMENT_ID` and `VITE_GOOGLE_SITE_VERIFICATION` are set (see `.env.example`). After deploy, submit the sitemap in Search Console and use URL Inspection for priority URLs; optional IndexNow via `npm run seo:launch`.
+
+## Keywords (intent)
+
+cursor trail designer, cursor trail generator, CSS cursor trail, mouse trail effect, React Vue Angular cursor trail export.

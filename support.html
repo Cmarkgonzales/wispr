@@ -9,6 +9,12 @@
     content="Contact Wispr support, report issues, request features, and get troubleshooting help for cursor trail implementations." />
   <meta name="robots" content="index,follow,max-snippet:-1" />
   <link rel="canonical" href="https://wispr.dev/support.html" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Wispr Support" />
+  <meta property="og:description" content="Contact Wispr, report issues, and get help with cursor trail exports." />
+  <meta property="og:url" content="https://wispr.dev/support.html" />
+  <meta name="twitter:card" content="summary" />
   <style>
     :root { --bg:#09080f; --panel:#16122a; --border:rgba(115,85,232,.20); --text:#ede6ff; --muted:#7a6e9a; --accent:#7355e8; --accent-lit:#a480ff; }
     * { box-sizing: border-box; }
@@ -45,29 +51,26 @@
   </header>
 
   <main>
-    <h1>Support Wispr</h1>
-    <p>Need help shipping a cursor trail effect? Use the channels below for direct support and product feedback.</p>
+    <h1>Support</h1>
+    <p style="color: var(--muted); max-width: 52ch;">Questions about exports, bugs, or ideas — reach out here. For features and setup, see <a href="/guides/">Guides</a> (including <a href="/guides/#features">what the playground includes</a>).</p>
 
     <section class="box">
       <h2>Contact</h2>
-      <p>Email: <a href="mailto:support@wispr.dev">support@wispr.dev</a></p>
-      <p>Response target: within 2 business days.</p>
+      <p><a href="mailto:support@wispr.dev">support@wispr.dev</a> — we aim to reply within two business days.</p>
     </section>
 
     <section class="box">
-      <h2>Report an Issue</h2>
+      <h2>Bug reports</h2>
       <p>
-        Include your browser version, framework (if any), and the exact settings used in the
-        <a href="/playground.html">playground</a> so support can reproduce quickly.
+        Send browser and OS, framework (if any), and what you changed in the <a href="/playground.html">playground</a> (preset, chase on/off, etc.). Screenshots or a short screen recording help.
       </p>
     </section>
 
     <section class="box">
-      <h2>Before You Contact Support</h2>
+      <h2>Before you write</h2>
       <ul>
-        <li>Check the <a href="/guides/">Guides and FAQ</a> for implementation patterns.</li>
-        <li>Validate with a shorter trail and reduced particle size for performance tuning.</li>
-        <li>Check the guides for the most up-to-date implementation recommendations.</li>
+        <li><a href="/guides/">Guides</a> — stack-specific setup.</li>
+        <li><a href="/">Home FAQ</a> — performance and disambiguation from the Cursor IDE.</li>
       </ul>
     </section>
   </main>
@@ -75,7 +78,7 @@
   <footer class="site-footer">
     <div class="site-footer-inner">
       <p>Wispr cursor trail designer.</p>
-      <p><a href="/support.html">Need help?</a> Visit Support.</p>
+      <p><a href="/">Home</a> · <a href="/guides/">Guides</a></p>
     </div>
   </footer>
   <script src="/src/trail-ambient.js"></script>

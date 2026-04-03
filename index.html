@@ -12,8 +12,84 @@
   <meta property="og:title" content="Wispr Cursor Trail Designer" />
   <meta property="og:description" content="Design custom cursor trail effects and export framework-ready code." />
   <meta property="og:url" content="https://wispr.dev/" />
+  <meta property="og:image" content="https://wispr.dev/favicon.svg" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Wispr — Cursor trail designer" />
+  <meta name="twitter:description" content="Design cursor trail effects in the browser. Export JS, CSS, HTML, React, Vue, or Angular." />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "name": "Wispr",
+        "url": "https://wispr.dev/",
+        "description": "Browser-based cursor trail designer for developers and designers. Not related to the Cursor IDE."
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "Wispr",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Web browser",
+        "url": "https://wispr.dev/playground.html",
+        "description": "Interactive tool to design custom mouse cursor trail effects and copy export-ready code.",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "featureList": [
+          "Live playground with presets and particle shapes",
+          "Color modes: gradient, mixed, random; blend modes; optional glow",
+          "Motion controls: trail length, fade, chase and lag (smooth, elastic, delayed)",
+          "Export JavaScript, CSS, HTML, React, Vue, and Angular snippets"
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is Wispr?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Wispr is a web app for designing animated cursor trail effects. You tune the look in a live preview, then copy or export code. It is a visual effect tool, not a code editor or the Cursor IDE."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I add a cursor trail to my site?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Open the playground, adjust presets and controls, choose the JS, CSS, HTML, React, Vue, or Angular tab, then copy the snippet or use Export all. Paste into your project and mount the effect at layout level for consistent behavior."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is Wispr the same as the Cursor AI editor?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Wispr only builds mouse trail effects for websites. The name refers to cursor as in the mouse pointer, not the Cursor brand."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How can I keep the effect smooth on slower devices?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Shorten trail length, reduce particle size and glow, and use moderate fade and chase settings. Test on real hardware after export."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which stacks does Wispr export to?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Vanilla JavaScript, CSS, HTML embed, React, Vue 3, and Angular. The same visual settings map to each export tab."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
   <style>
     :root {
       --bg: #09080f;
@@ -144,6 +220,11 @@
     .site-footer p { margin: 0; color: var(--muted); font-size: 0.92rem; }
     .site-footer a { color: var(--text); text-decoration: none; }
     .site-footer a:hover { color: var(--accent); }
+    .faq { margin-top: 40px; padding-top: 28px; border-top: 1px solid var(--border); }
+    .faq h2 { font-size: 1.15rem; margin: 0 0 16px; }
+    .faq details { border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; margin-bottom: 10px; background: rgba(115, 85, 232, 0.04); }
+    .faq summary { cursor: pointer; font-weight: 600; color: var(--text); }
+    .faq details p { margin: 10px 0 0; color: var(--muted); font-size: 0.95rem; }
   </style>
 </head>
 <body>
@@ -160,33 +241,53 @@
   </header>
 
   <main>
-    <h1>Design Cursor Trails That Feel Premium</h1>
+    <h1>Cursor trail designer for the web</h1>
     <p class="lead">
-      Wispr is a focused cursor trail designer for web teams. Build your effect in the interactive playground, then export code for
-      JavaScript, CSS, HTML, React, Vue, and Angular. Wispr is a visual effect tool, not an IDE.
+      Wispr is a browser playground for <strong>mouse trail effects</strong> — presets, shapes, colors, chase modes, and one-click exports.
+      Ship vanilla JS or framework snippets (React, Vue, Angular). This is not the Cursor IDE.
     </p>
-    <a class="cta" href="/playground.html">Open Playground</a>
+    <a class="cta" href="/playground.html">Open playground</a>
 
-    <section class="grid" aria-label="Wispr sections">
+    <section class="grid" aria-label="What you get">
       <article class="card">
-        <h2>Interactive Playground</h2>
-        <p>Customize particles, motion, blend mode, and export clean implementation code.</p>
+        <h2>Playground</h2>
+        <p>Seven presets, twelve particle shapes, gradient or random color modes, blend modes, glow, and optional chase (smooth, elastic, or delayed).</p>
       </article>
       <article class="card">
-        <h2>Guides and FAQ</h2>
-        <p>Read practical setup guides for CSS, React, Vue, and Angular, plus common questions.</p>
+        <h2>Export</h2>
+        <p>Copy from the JS, CSS, HTML, React, Vue, or Angular tab — or download everything as one file.</p>
       </article>
       <article class="card">
-        <h2>Support</h2>
-        <p>Get help, report issues, request features, and find next steps for troubleshooting.</p>
+        <h2>Learn</h2>
+        <p>Short guides for CSS-first pages and React, Vue, or Angular — including a full <a href="/guides/#features">feature list</a> for the designer.</p>
       </article>
+    </section>
+
+    <section class="faq" aria-labelledby="faq-heading">
+      <h2 id="faq-heading">FAQ</h2>
+      <details>
+        <summary>What is Wispr?</summary>
+        <p>A free web tool to design animated pointer trails and copy implementation code. It does not replace a code editor.</p>
+      </details>
+      <details>
+        <summary>Is this related to the Cursor AI editor?</summary>
+        <p>No. “Cursor” here means the mouse pointer. Wispr only generates trail effects for sites and apps.</p>
+      </details>
+      <details>
+        <summary>How do I use the exported code?</summary>
+        <p>Build the look in the playground, open the tab that matches your stack, copy, and paste — usually at your root layout so the trail stays global.</p>
+      </details>
+      <details>
+        <summary>How do I keep it performant?</summary>
+        <p>Favor shorter trails, smaller particles, and lower glow on mobile; tune fade and chase until it feels smooth on your target devices.</p>
+      </details>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="site-footer-inner">
-      <p>Wispr cursor trail designer.</p>
-      <p><a href="/support.html">Need help?</a> Visit Support.</p>
+      <p>Wispr — cursor trail designer.</p>
+      <p><a href="/support.html">Support</a></p>
     </div>
   </footer>
   <script src="/src/trail-ambient.js"></script>
